@@ -87,7 +87,6 @@ namespace DTE.Domains
         {
             LoadConnection = true;
 
-
             var connectionBuilder = ParentTreeBase.ConnectionBuilder;
             var dteCore = new DTECore(connectionBuilder.ConnectionType, connectionBuilder.ConnectionString,new DTESettings().Settings);
 
@@ -99,9 +98,7 @@ namespace DTE.Domains
                 Tables.Add(new Table() { TableName = tableName, ParentTreeBase = ParentTreeBase, DataBaseName = DatabaseName });
             }
 
-
             LoadConnection = false;
-
         }
     }
 }

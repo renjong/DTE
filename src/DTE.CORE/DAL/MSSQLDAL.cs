@@ -69,14 +69,16 @@ namespace DTE.CORE.Cores
 
         public DataTable GetSchema(string database_name, string table_name)
         {
-            string query = $"USE [{database_name}]; select * from INFORMATION_SCHEMA.COLUMNS where TABLE_SCHEMA+'.'+TABLE_NAME = '{table_name}';";
+            var tableName = MSSQLHelper.GetTableNameWithoutBracket(table_name);
+            string query = $"USE [{database_name}]; select * from INFORMATION_SCHEMA.COLUMNS where TABLE_SCHEMA+'.'+TABLE_NAME = '{tableName}';";
 
             return MSSQLHelper.ExecuteDataset(_connectionFactory.ConnectionString, query).Tables[0];
         }
 
         public async Task<DataTable> GetSchemaAsync(string database_name, string table_name)
         {
-            string query = $"USE [{database_name}]; select * from INFORMATION_SCHEMA.COLUMNS where TABLE_SCHEMA+'.'+TABLE_NAME = '{table_name}';";
+            var tableName = MSSQLHelper.GetTableNameWithoutBracket(table_name);
+            string query = $"USE [{database_name}]; select * from INFORMATION_SCHEMA.COLUMNS where TABLE_SCHEMA+'.'+TABLE_NAME = '{tableName}';";
 
             return (await MSSQLHelper.ExecuteDatasetAsync(_connectionFactory.ConnectionString, query)).Tables[0];
         }

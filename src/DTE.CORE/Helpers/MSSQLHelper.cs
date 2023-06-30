@@ -53,6 +53,12 @@ namespace DTE.CORE.Helpers
             return table;
         }
 
-
+        public static string GetTableNameWithoutBracket(this string tableName)
+        {
+            var table_info = tableName.Replace(" (view)", "").Split('.');
+            var schema = table_info.Count() > 1 ? table_info.First() : string.Empty;
+            var table = table_info.Count() > 1 ? $"{schema}.{table_info.Last()}" : table_info.Last();
+            return table;
+        }
     }
 }
