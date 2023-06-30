@@ -37,6 +37,7 @@ namespace DTE.CORE
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
+                //skip hidden key columns
                 bool.TryParse(dt.Rows[i]["IsHidden"].ToString(), out var isHidden);
                 if (isHidden) continue;
 
