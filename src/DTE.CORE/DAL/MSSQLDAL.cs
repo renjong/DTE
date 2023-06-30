@@ -98,7 +98,8 @@ namespace DTE.CORE.Cores
                     when TABLE_TYPE = 'VIEW'
                          then TABLE_SCHEMA + '.' + TABLE_NAME + ' (view)'
                          else TABLE_SCHEMA + '.' + TABLE_NAME
-                    end FROM [{database_name}].INFORMATION_SCHEMA.TABLES";
+                    end FROM [{database_name}].INFORMATION_SCHEMA.TABLES
+                    Order By TABLE_NAME";
 
             return await _connectionFactory.CreateConnection().QueryAsync<string>(sql);
         }

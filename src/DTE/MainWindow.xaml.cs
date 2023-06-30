@@ -154,8 +154,7 @@ namespace DTE
                 {
                     var id = twm.ConnectionBuilder.Id.ToString();
                     vm.RefreshConnAsync(id);
-                }
-                var context = s.DataContext;                
+                }               
             }
         }
     }
