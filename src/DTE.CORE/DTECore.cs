@@ -37,12 +37,15 @@ namespace DTE.CORE
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
+                bool.TryParse(dt.Rows[i]["IsHidden"].ToString(), out var isHidden);
+                if (isHidden) continue;
+
+                bool.TryParse(dt.Rows[i]["IsKey"].ToString(), out var isKey);
                 var auto_increment = bool.Parse(dt.Rows[i]["IsAutoIncrement"]?.ToString());
                 var column_name = dt.Rows[i]["ColumnName"].ToString();
                 var allow_null = bool.Parse(dt.Rows[i]["AllowDBNull"].ToString());
                 var column_type = dt.Rows[i]["DataType"].ToString();
-                var isKey = bool.Parse(dt.Rows[i]["IsKey"].ToString());
-
+            
                 var name = Settings.CaseSensitivity ? column_name : Helpers.ModelCreateHelper.ColumnNameToPropName(column_name.ToString());
                 var cType = GetCsharpType(column_type, allow_null);
                 var comment = "";
