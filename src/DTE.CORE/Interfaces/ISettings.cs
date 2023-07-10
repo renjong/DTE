@@ -21,5 +21,6 @@ namespace DTE.CORE.Interfaces
         string FullPropTemplate { get; set; }
         string PropTemplate { get; set; }
         string ClassTemplate { get; set; }
+        string TableException { get; set; }
     }
 }

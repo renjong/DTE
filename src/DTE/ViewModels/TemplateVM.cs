@@ -11,13 +11,16 @@ namespace DTE.ViewModels
 {
     public enum TemplateType
     {
-        Property,FullProperty,Class
+        Property,
+        FullProperty,
+        Class,
+        TableException
     }
     public class TemplateVM : DataBindingBase45
     {
 
         List<string> PropTemplateLabels = new List<string>() { "[PrivateName]", "[PublicName]", "[Comment]", "[Type]", "[Annotations]" };
-        List<string> ClassTemplateLabels = new List<string>() { "[Prefix]", "[Postfix]", "[Name]","[Properties]" };
+        List<string> ClassTemplateLabels = new List<string>() { "[Prefix]", "[Postfix]", "[Name]","[Properties]" };        
 
         private IDialogCoordinator dialogCoordinator;
 
@@ -42,6 +45,9 @@ namespace DTE.ViewModels
                         break;
                     case TemplateType.Class:
                         Settings.Settings.ClassTemplate = Text;
+                        break;
+                    case TemplateType.TableException:
+                        Settings.Settings.TableException = Text;
                         break;
                     default:
                         break;
@@ -71,6 +77,10 @@ namespace DTE.ViewModels
                 case TemplateType.Class:
                     Text = Settings.Settings.ClassTemplate;
                     Labels = ClassTemplateLabels;
+                    break;
+                case TemplateType.TableException:
+                    Text = Settings.Settings.TableException;
+                    labels = new List<string>();
                     break;
                 default:
                     break;

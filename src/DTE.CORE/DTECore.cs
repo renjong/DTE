@@ -1,4 +1,5 @@
-﻿using DTE.CORE.Interfaces;
+﻿using Dapper;
+using DTE.CORE.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -162,13 +163,29 @@ namespace DTE.CORE
             return dt;
         }
         public IEnumerable<string> GetDatabases()
-        {
-            return DTEService.GetDatabases();
+        {            
+            var lstRst = DTEService.GetDatabases();
+            var lstExcept = StringSplitByNewLine(Settings.TableException);
+     
+            foreach (var row in lstRst)
+            {
+                if (lstExcept.Contains(row) == false)
+                {
+                    yield return row;                    
+                }
+            }            
         }
         public IEnumerable<string> GetTables(string database_name)
-        {
-            return DTEService.GetTables(database_name);
+        {            
+            return DTEService.GetTables(database_name);            
         }
+
+        private List<string> StringSplitByNewLine(string str)
+        {
+            List<string> lst = str.Split(new string[] { Environment.NewLine }, StringSplitOptions.None).ToList();
+            return lst;
+        }
+
         public IEnumerable<string> GetColumns(string database_name, string table_name)
         {
             return DTEService.GetColumns(database_name,table_name);
@@ -179,8 +196,33 @@ namespace DTE.CORE
         }
         public async Task<IEnumerable<string>> GetDatabasesAsync()
         {
-            return await DTEService.GetDatabasesAsync();
+            var lstRst = await DTEService.GetDatabasesAsync();
+            var lstExcept = StringSplitByNewLine(Settings.TableException);
+            var lstRet = new List<string>();
+
+            foreach (var row in lstRst)
+            {
+                if (rowInList(row, lstExcept) == false)                             
+                {
+                    lstRet.Add(row);
+                }
+            }
+            return lstRet;
         }
+
+        private bool rowInList(string row, List<string> lstExcept)
+        {
+            foreach(var r in lstExcept)
+            {
+                if (row.Contains(r))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public async Task<IEnumerable<string>> GetTablesAsync(string database_name)
         {
             return await DTEService.GetTablesAsync(database_name);

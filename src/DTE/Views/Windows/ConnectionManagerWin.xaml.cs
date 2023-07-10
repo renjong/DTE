@@ -42,7 +42,7 @@ namespace DTE.Views.Windows
 
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            (DataContext as ViewModels.ConnectionManagerVM).ConnectionBuilder.Password = password.Password;
+            (DataContext as ConnectionManagerVM).ConnectionBuilder.Password = password.Password;
         }
 
         private void ConnectButton_Click(object sender, RoutedEventArgs e)

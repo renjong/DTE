@@ -361,6 +361,9 @@
     <Content Include="Templates\Property.tpl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Templates\TableException.tpl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Resource Include="dte-logo-v1.ico" />
     <Content Include="settings">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTE;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -19,12 +20,13 @@ using DTE.Domains.Interfaces;
 using DTE.CORE;
 using DTE.CORE.Helpers;
 using Org.BouncyCastle.Crypto.Engines;
+using System.Windows.Input;
 
 namespace DTE.ViewModels
 {
     public partial class MainWindowVM : DataBindingBase45
     {
-        private IDialogCoordinator dialogCoordinator;
+        private readonly IDialogCoordinator dialogCoordinator;
 
         #region Commands
         public RelayCommand SelectToEntityCommand
@@ -53,6 +55,14 @@ namespace DTE.ViewModels
             get
             {
                 return new RelayCommand(_ => DataAnnotationsSettings());
+            }
+        }
+
+        public RelayCommand TableExceptionSettingsCommand
+        {
+            get
+            {
+                return new RelayCommand(_ => TableExceptionSettings());
             }
         }
         public RelayCommand TemplateSettingsCommand
@@ -153,19 +163,23 @@ namespace DTE.ViewModels
         }
         private void TemplateSettings(string type)
         {
-            Views.Windows.TemplateWindow templateWindow = null;
+            TemplateWindow templateWindow = null;
             switch (type)
             {
                 case "p":
-                    templateWindow = new Views.Windows.TemplateWindow(TemplateType.Property);
+                    templateWindow = new TemplateWindow(TemplateType.Property);
                     templateWindow.Show();
                     break;
                 case "fp":
-                    templateWindow = new Views.Windows.TemplateWindow(TemplateType.FullProperty);
+                    templateWindow = new TemplateWindow(TemplateType.FullProperty);
                     templateWindow.Show();
                     break;
                 case "c":
-                    templateWindow = new Views.Windows.TemplateWindow(TemplateType.Class);
+                    templateWindow = new TemplateWindow(TemplateType.Class);
+                    templateWindow.Show();
+                    break;
+                case "te":
+                    templateWindow = new TemplateWindow(TemplateType.TableException);
                     templateWindow.Show();
                     break;
                 default:
@@ -173,14 +187,18 @@ namespace DTE.ViewModels
             }
 
         }
+        private void TableExceptionSettings()
+        {
+
+        }
         private void DataAnnotationsSettings()
         {
-            Views.Windows.DataAnnotationsWindow annotationsWindow = new Views.Windows.DataAnnotationsWindow();
+            DataAnnotationsWindow annotationsWindow = new DataAnnotationsWindow();
             annotationsWindow.Show();
         }
         private void TypeConversionSettings()
         {
-            Views.Windows.TypeConversion Window = new Views.Windows.TypeConversion();
+            TypeConversion Window = new TypeConversion();
             Window.Show();
         }
         private void CreateIntoFilesAsync()
@@ -355,7 +373,7 @@ namespace DTE.ViewModels
         {
             try
             {
-                Views.Windows.ConnectionManagerWin connectionManagerWin = new Views.Windows.ConnectionManagerWin(SelectedNode as TreeViewModel);
+                ConnectionManagerWin connectionManagerWin = new ConnectionManagerWin(SelectedNode as TreeViewModel);
                 var res = connectionManagerWin.ShowDialog();
 
                 XMLCore.ConnectionDeserialize();
@@ -464,7 +482,7 @@ namespace DTE.ViewModels
                 }
                 else
                 {
-                    new Views.Windows.ConnectionManagerWin().ShowDialog();
+                    new ConnectionManagerWin().ShowDialog();
                     XMLCore.ConnectionDeserialize();
                     XMLCore.Connections.FirstOrDefault()?.LoadDatabasesAsync();
                 }
@@ -499,7 +517,7 @@ namespace DTE.ViewModels
 
 
         object _selectedNode;
-        Cores.DTEXMLConnection _xmlCore = new Cores.DTEXMLConnection();
+        DTEXMLConnection _xmlCore = new DTEXMLConnection();
         bool _flyOutOpen;
         DTESettings _settings = new DTESettings();
         bool _load;
@@ -523,7 +541,7 @@ namespace DTE.ViewModels
                 GetSchemaAsync();
             }
         }
-        public Cores.DTEXMLConnection XMLCore
+        public DTEXMLConnection XMLCore
         {
             get
             {
@@ -540,7 +558,7 @@ namespace DTE.ViewModels
         {
             get
             {
-                if (SelectedNode != null && SelectedNode is Domains.TreeViewModel)
+                if (SelectedNode != null && SelectedNode is TreeViewModel)
                 {
                     return true;
                 }
@@ -653,13 +671,13 @@ namespace DTE.ViewModels
         }
 
         public List<AccentColorMenuData> AccentColors { get; set; } = ThemeManager.Accents
-                                             .Select(a => new AccentColorMenuData() { Name = a.Name, ColorBrush = a.Resources["AccentColorBrush"] as System.Drawing.Brush, Color = a.Resources["AccentColorBrush"].ToString() })
+                                             .Select(a => new AccentColorMenuData() { Name = a.Name, ColorBrush = a.Resources["AccentColorBrush"] as Brush, Color = a.Resources["AccentColorBrush"].ToString() })
                                              .ToList();
         public class AccentColorMenuData
         {
             public string Name { get; set; }
-            public System.Drawing.Brush BorderColorBrush { get; set; }
-            public System.Drawing.Brush ColorBrush { get; set; }
+            public Brush BorderColorBrush { get; set; }
+            public Brush ColorBrush { get; set; }
             public string Color { get; set; }
             public AccentColorMenuData()
             {
@@ -667,6 +685,7 @@ namespace DTE.ViewModels
             }
 
         }
+      
         #endregion
     }
 

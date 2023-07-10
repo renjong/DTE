@@ -107,7 +107,7 @@ namespace DTE.Architecture
 
         private void SaveFileThenAddToProject(string filePath,string fileText,Project project)
         {
-            System.IO.FileInfo file = new System.IO.FileInfo(filePath);
+            FileInfo file = new FileInfo(filePath);
             file.Directory.Create(); // If the directory already exists, this method does nothing.
             if (File.Exists(file.FullName))
                 return;

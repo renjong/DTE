@@ -15,7 +15,8 @@ namespace DTE.Cores
         private const string ProperyTemplatPath = @"Templates\Property.tpl";
         private const string FullPropertyTemplatePath = @"Templates\FullProperty.tpl";
         private const string ClassPath = @"Templates\Class.tpl";
-        private string fileName = "settings";
+        private const string TableExceptionPath = @"Templates\TableException.tpl";
+        private const string fileName = "settings";
         public DTESettings()
         {
             SettingsDeserialize();
@@ -47,6 +48,7 @@ namespace DTE.Cores
             _settings.PropTemplate = File.ReadAllText(ProperyTemplatPath);
             _settings.FullPropTemplate = File.ReadAllText(FullPropertyTemplatePath);
             _settings.ClassTemplate = File.ReadAllText(ClassPath);
+            _settings.TableException = File.ReadAllText(TableExceptionPath);
         }
         public void SettingsSerialize()
         {
@@ -58,6 +60,7 @@ namespace DTE.Cores
             File.WriteAllText(ProperyTemplatPath, _settings.PropTemplate);
             File.WriteAllText(FullPropertyTemplatePath, _settings.FullPropTemplate);
             File.WriteAllText(ClassPath, _settings.ClassTemplate);
+            File.WriteAllText(TableExceptionPath, _settings.TableException);
         }
     }
 }

@@ -23,23 +23,23 @@ namespace DTE.Cores
         {
             if (File.Exists(fileName))
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Domains.TreeViewModel>));
+                XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<TreeViewModel>));
                 StreamReader reader = new StreamReader(fileName);
-                Connections = (ObservableCollection<Domains.TreeViewModel>)serializer.Deserialize(reader);
+                Connections = (ObservableCollection<TreeViewModel>)serializer.Deserialize(reader);
                 reader.Close();
             }
 
         }
         public void ConnectionSerialize()
         {
-            XmlSerializer ser = new XmlSerializer(typeof(ObservableCollection<Domains.TreeViewModel>));
+            XmlSerializer ser = new XmlSerializer(typeof(ObservableCollection<TreeViewModel>));
             TextWriter writer = new StreamWriter(fileName);
             ser.Serialize(writer, Connections);
             writer.Close();
         }
 
-        ObservableCollection<Domains.TreeViewModel> _connections = new ObservableCollection<TreeViewModel>();
-        public ObservableCollection<Domains.TreeViewModel> Connections
+        ObservableCollection<TreeViewModel> _connections = new ObservableCollection<TreeViewModel>();
+        public ObservableCollection<TreeViewModel> Connections
         {
             get
             {

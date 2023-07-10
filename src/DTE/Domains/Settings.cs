@@ -28,6 +28,7 @@ namespace DTE.Domains
         private string fullPropTemplate;
         private string _propTemplate;
         private string _classTemplate;
+        private string _TableException;
         private string _filePrefix;
         private string _filePostfix;
         private string _accentColor;
@@ -195,6 +196,8 @@ namespace DTE.Domains
         [XmlIgnore]
         public string ClassTemplate { get => _classTemplate; set { _classTemplate = value; OnPropertyChanged(); } }
         [XmlIgnore]
+        public string TableException { get => _TableException; set { _TableException = value; OnPropertyChanged(); } }
+        [XmlIgnore]
         public string AccentColor
         {
             get
@@ -209,7 +212,7 @@ namespace DTE.Domains
         }
 
         [XmlIgnore]
-        public SolidColorBrush AccentBrush { get => _accentBrush; set { _accentBrush = value; OnPropertyChanged(); } }
+        public SolidColorBrush AccentBrush { get => _accentBrush; set { _accentBrush = value; OnPropertyChanged(); } }        
         [XmlIgnore]
         IAttributes ISettings.Attributes { get => Attributes; }
         [XmlIgnore]

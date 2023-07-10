@@ -86,12 +86,12 @@ namespace DTE.CORE.Cores
         public IEnumerable<string> GetTables(string database_name)
         {
             return _connectionFactory.CreateConnection().Query<string>($@"
-            SELECT case 
-                   when TABLE_TYPE = 'VIEW'
+                SELECT case 
+                    when TABLE_TYPE = 'VIEW'
                         then TABLE_SCHEMA+'.'+TABLE_NAME +' (view)'
                         else TABLE_SCHEMA+'.'+TABLE_NAME
-                   end 
-                   FROM [{database_name}].INFORMATION_SCHEMA.TABLES");
+                    end 
+                FROM [{database_name}].INFORMATION_SCHEMA.TABLES");          
         }
 
         public async Task<IEnumerable<string>> GetTablesAsync(string database_name)

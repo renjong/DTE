@@ -119,7 +119,7 @@ namespace {NameSpace}
         {
             var filePath = $"{DestinationPath}/{modelname}.cs";
 
-            System.IO.FileInfo file = new System.IO.FileInfo(filePath);
+            FileInfo file = new FileInfo(filePath);
             file.Directory.Create(); // If the directory already exists, this method does nothing.
             System.IO.File.WriteAllText(file.FullName, cs_file_code);
             if (string.IsNullOrEmpty(ProjectPath) == false)
