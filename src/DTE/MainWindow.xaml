@@ -164,7 +164,7 @@
             </Fluent:RibbonTabItem>-->
             <Fluent:RibbonTabItem Header="SETTINGS">
                 <Fluent:RibbonGroupBox Header="SETTINGS" >
-                    <Fluent:Button  Header="TABLE EXCEPTION" Command="{Binding TemplateSettingsCommand}" CommandParameter="te">
+                    <Fluent:Button  Header="DATABASE FILTER" Command="{Binding TemplateSettingsCommand}" CommandParameter="te">
                         <Fluent:Button.LargeIcon>
                             <iconPacks:PackIconMaterial VerticalAlignment="Stretch"
                                 Kind="Settings" />
