@@ -22,7 +22,7 @@ namespace DTE.Views.Windows
     /// </summary>
     public partial class TypeConversion : MetroWindow
     {
-        TypeConversionVM vm = new TypeConversionVM(DialogCoordinator.Instance);
+        readonly TypeConversionVM vm = new TypeConversionVM(DialogCoordinator.Instance);
 
         public TypeConversion()
         {

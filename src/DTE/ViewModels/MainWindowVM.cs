@@ -163,7 +163,8 @@ namespace DTE.ViewModels
         }
         private void TemplateSettings(string type)
         {
-            TemplateWindow templateWindow = null;
+            TemplateWindow templateWindow;
+
             switch (type)
             {
                 case "p":
@@ -658,7 +659,7 @@ namespace DTE.ViewModels
                 return new RelayCommand(p => DoChangeTheme(p.ToString()));
             }
         }
-        Random rnd = new Random();
+        readonly Random rnd = new Random();
         protected virtual void DoChangeTheme(string sender)
         {
             if (sender == "R")

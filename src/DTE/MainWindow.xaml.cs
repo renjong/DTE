@@ -19,7 +19,7 @@ namespace DTE
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        MainWindowVM vm = new MainWindowVM(DialogCoordinator.Instance);
+        private readonly MainWindowVM vm = new MainWindowVM(DialogCoordinator.Instance);
         public MainWindow()
         {
             InitializeComponent();
@@ -30,8 +30,8 @@ namespace DTE
         private void ThemeManager_IsThemeChanged(object sender, Fluent.OnThemeChangedEventArgs args)
         {
             // Sync Fluent and MahApps ThemeManager
-            var fluentRibbonTheme = args?.AppTheme ?? Fluent.ThemeManager.DetectAppStyle().Item1;
-             }
+            _ = args?.AppTheme ?? Fluent.ThemeManager.DetectAppStyle().Item1;
+        }
 
         private void MahMetroWindow_Closed(object sender, EventArgs e)
         {

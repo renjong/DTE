@@ -32,7 +32,7 @@ namespace DTE.ViewModels
             }
         }
 
-        private IDialogCoordinator dialogCoordinator;
+        private readonly IDialogCoordinator dialogCoordinator;
 
         public ConnectionManagerVM()
         {
@@ -188,7 +188,7 @@ namespace DTE.ViewModels
         }
 
         private bool _buttonsEnable = true;
-        private bool isEdit;
+        private readonly bool isEdit;
 
         public bool ButtonsEnable
         {

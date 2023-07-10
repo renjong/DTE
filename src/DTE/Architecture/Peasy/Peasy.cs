@@ -19,9 +19,9 @@ namespace DTE.Architecture
         private readonly string _dataLayerProjectPath;
         private static Project _businessProject;
         private static Project _dataLayerProject;
-        private string _businessProjectName;
-        private string _dataLayerProjectName;
-        private PeasyHelper _peasyHelper;
+        private readonly string _businessProjectName;
+        private readonly string _dataLayerProjectName;
+        private readonly PeasyHelper _peasyHelper;
         
         public IEnumerable<Table> Tables { get; }
         public DTECore DTECore { get; }

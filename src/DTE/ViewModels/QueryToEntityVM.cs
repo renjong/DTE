@@ -14,7 +14,7 @@ namespace DTE.ViewModels
 {
     public class QueryToEntityVM : DataBindingBase45
     {
-        IDialogCoordinator _dialogCoordinator;
+        readonly IDialogCoordinator _dialogCoordinator;
         public QueryToEntityVM()
         {
 

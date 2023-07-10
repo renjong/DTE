@@ -13,7 +13,7 @@ namespace DTE.Cores
     public class DTEXMLConnection : DataBindingBase45
     {
 
-        private string fileName = "connections";
+        private readonly string fileName = "connections";
         public DTEXMLConnection()
         {
             ConnectionDeserialize();

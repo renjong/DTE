@@ -19,10 +19,10 @@ namespace DTE.ViewModels
     public class TemplateVM : DataBindingBase45
     {
 
-        List<string> PropTemplateLabels = new List<string>() { "[PrivateName]", "[PublicName]", "[Comment]", "[Type]", "[Annotations]" };
-        List<string> ClassTemplateLabels = new List<string>() { "[Prefix]", "[Postfix]", "[Name]","[Properties]" };        
+        readonly List<string> PropTemplateLabels = new List<string>() { "[PrivateName]", "[PublicName]", "[Comment]", "[Type]", "[Annotations]" };
+        readonly List<string> ClassTemplateLabels = new List<string>() { "[Prefix]", "[Postfix]", "[Name]","[Properties]" };        
 
-        private IDialogCoordinator dialogCoordinator;
+        private readonly IDialogCoordinator dialogCoordinator;
 
         public RelayCommand Save
         {
@@ -95,7 +95,7 @@ namespace DTE.ViewModels
         DTESettings _settings = new DTESettings();
         private List<string> labels;
         private string text;
-        private TemplateType _templateType;
+        private readonly TemplateType _templateType;
 
         public DTESettings Settings
         {

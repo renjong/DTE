@@ -22,7 +22,7 @@ namespace DTE.Views.Windows
     /// </summary>
     public partial class DataAnnotationsWindow : MetroWindow
     {
-        DataAnnotationsVM vm = new DataAnnotationsVM(DialogCoordinator.Instance);
+        readonly DataAnnotationsVM vm = new DataAnnotationsVM(DialogCoordinator.Instance);
 
         public DataAnnotationsWindow()
         {

@@ -23,7 +23,7 @@ namespace DTE.Views.Windows
     /// </summary>
     public partial class ConnectionManagerWin : MetroWindow
     {
-        ConnectionManagerVM vm = new ConnectionManagerVM(DialogCoordinator.Instance);
+        readonly ConnectionManagerVM vm = new ConnectionManagerVM(DialogCoordinator.Instance);
 
         public ConnectionManagerWin()
         {

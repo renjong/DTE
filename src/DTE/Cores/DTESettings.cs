@@ -60,7 +60,7 @@ namespace DTE.Cores
             File.WriteAllText(ProperyTemplatPath, _settings.PropTemplate);
             File.WriteAllText(FullPropertyTemplatePath, _settings.FullPropTemplate);
             File.WriteAllText(ClassPath, _settings.ClassTemplate);
-            File.WriteAllText(TableExceptionPath, _settings.TableException);
+            File.WriteAllText(TableExceptionPath, _settings.TableException.Trim());
         }
     }
 }

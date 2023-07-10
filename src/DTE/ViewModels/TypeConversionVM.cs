@@ -11,7 +11,7 @@ namespace DTE.ViewModels
 {
     public class TypeConversionVM : DataBindingBase45
     {
-        private IDialogCoordinator dialogCoordinator;
+        private readonly IDialogCoordinator dialogCoordinator;
 
         public RelayCommand Save
         {

@@ -202,7 +202,7 @@ namespace DTE.CORE
 
             foreach (var row in lstRst)
             {
-                if (rowInList(row, lstExcept) == false)                             
+                if (RowInList(row, lstExcept) == false)                             
                 {
                     lstRet.Add(row);
                 }
@@ -210,7 +210,7 @@ namespace DTE.CORE
             return lstRet;
         }
 
-        private bool rowInList(string row, List<string> lstExcept)
+        private bool RowInList(string row, List<string> lstExcept)
         {
             foreach(var r in lstExcept)
             {

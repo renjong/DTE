@@ -27,7 +27,7 @@ namespace DTE.Views.Windows
     /// </summary>
     public partial class QueryToEntityWindow : MetroWindow
     {
-        QueryToEntityVM vm = new QueryToEntityVM(DialogCoordinator.Instance);
+        readonly QueryToEntityVM vm = new QueryToEntityVM(DialogCoordinator.Instance);
 
         public QueryToEntityWindow()
         {
