@@ -20,6 +20,8 @@
     Dialog:DialogParticipation.Register="{Binding}"
     BorderBrush="{DynamicResource AccentColorBrush}"
     BorderThickness="1"
+    WindowState="Maximized"
+    WindowStyle="None"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d" x:Name="window">
 
